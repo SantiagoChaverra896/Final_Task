@@ -92,7 +92,7 @@ namespace Final_Task.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void UC1LoginWithEmptyCredentials(string browser, string[] exampleTags)
+        public virtual void UC12LoginWithEmptyCredentialsButClearingTheInputFields(string browser, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "UC1"};
@@ -103,7 +103,7 @@ namespace Final_Task.Features
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("browser", browser);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UC1 Login with empty credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UC12 Login with empty credentials but clearing the input fields", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -118,9 +118,15 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given(string.Format("A user is using the \"{0}\" browser", browser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("The user clicks the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("The user clears the username field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
+ testRunner.And("The user clears the password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
+ testRunner.When("The user clicks the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
  testRunner.Then("The application should display the error message: Username is required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -128,32 +134,32 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC1 Login with empty credentials: chrome")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC12 Login with empty credentials but clearing the input fields: chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Test Login Scenarios")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UC1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:browser", "chrome")]
-        public void UC1LoginWithEmptyCredentials_Chrome()
+        public void UC12LoginWithEmptyCredentialsButClearingTheInputFields_Chrome()
         {
 #line 6
-this.UC1LoginWithEmptyCredentials("chrome", ((string[])(null)));
+this.UC12LoginWithEmptyCredentialsButClearingTheInputFields("chrome", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC1 Login with empty credentials: edge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC12 Login with empty credentials but clearing the input fields: edge")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Test Login Scenarios")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UC1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "edge")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:browser", "edge")]
-        public void UC1LoginWithEmptyCredentials_Edge()
+        public void UC12LoginWithEmptyCredentialsButClearingTheInputFields_Edge()
         {
 #line 6
-this.UC1LoginWithEmptyCredentials("edge", ((string[])(null)));
+this.UC12LoginWithEmptyCredentialsButClearingTheInputFields("edge", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void UC2LoginByPassignOnlyTheUsername(string browser, string[] exampleTags)
+        public virtual void UC21LoginByPassignOnlyTheUsername(string browser, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "UC2"};
@@ -164,8 +170,8 @@ this.UC1LoginWithEmptyCredentials("edge", ((string[])(null)));
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("browser", browser);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UC2 Login by passign only the username", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 16
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UC21 Login by passign only the username", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -175,16 +181,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 17
+#line 20
  testRunner.Given(string.Format("A user is using the \"{0}\" browser", browser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 18
+#line 21
  testRunner.And("The user types any credentials into the username field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 22
  testRunner.When("The user clicks the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
+#line 23
  testRunner.Then("The application should display the error message: Password is required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -192,28 +198,28 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC2 Login by passign only the username: chrome")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC21 Login by passign only the username: chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Test Login Scenarios")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UC2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "chrome")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:browser", "chrome")]
-        public void UC2LoginByPassignOnlyTheUsername_Chrome()
+        public void UC21LoginByPassignOnlyTheUsername_Chrome()
         {
-#line 16
-this.UC2LoginByPassignOnlyTheUsername("chrome", ((string[])(null)));
+#line 19
+this.UC21LoginByPassignOnlyTheUsername("chrome", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC2 Login by passign only the username: edge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("UC21 Login by passign only the username: edge")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Test Login Scenarios")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UC2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "edge")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:browser", "edge")]
-        public void UC2LoginByPassignOnlyTheUsername_Edge()
+        public void UC21LoginByPassignOnlyTheUsername_Edge()
         {
-#line 16
-this.UC2LoginByPassignOnlyTheUsername("edge", ((string[])(null)));
+#line 19
+this.UC21LoginByPassignOnlyTheUsername("edge", ((string[])(null)));
 #line hidden
         }
         
@@ -231,7 +237,7 @@ this.UC2LoginByPassignOnlyTheUsername("edge", ((string[])(null)));
             argumentsOfScenario.Add("username", username);
             argumentsOfScenario.Add("password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UC3 Login by passign Username and Password", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
+#line 30
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -241,19 +247,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 28
+#line 31
  testRunner.Given(string.Format("A user is using the \"{0}\" browser", browser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 29
+#line 32
  testRunner.And(string.Format("The user types a valid \"{0}\" into the username field", username), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 33
  testRunner.And(string.Format("The user types a valid \"{0}\" into the password field", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 31
+#line 34
  testRunner.When("The user clicks the Login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 32
+#line 35
  testRunner.Then("The application should lead the user to the dashboard page with the title: Swag L" +
                         "abs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -271,7 +277,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "secret_sauce")]
         public void UC3LoginByPassignUsernameAndPassword_Variant0()
         {
-#line 27
+#line 30
 this.UC3LoginByPassignUsernameAndPassword("chrome", "standard_user", "secret_sauce", ((string[])(null)));
 #line hidden
         }
@@ -286,7 +292,7 @@ this.UC3LoginByPassignUsernameAndPassword("chrome", "standard_user", "secret_sau
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "secret_sauce")]
         public void UC3LoginByPassignUsernameAndPassword_Variant1()
         {
-#line 27
+#line 30
 this.UC3LoginByPassignUsernameAndPassword("chrome", "visual_user", "secret_sauce", ((string[])(null)));
 #line hidden
         }
@@ -301,7 +307,7 @@ this.UC3LoginByPassignUsernameAndPassword("chrome", "visual_user", "secret_sauce
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "secret_sauce")]
         public void UC3LoginByPassignUsernameAndPassword_Variant2()
         {
-#line 27
+#line 30
 this.UC3LoginByPassignUsernameAndPassword("edge", "standard_user", "secret_sauce", ((string[])(null)));
 #line hidden
         }
@@ -316,7 +322,7 @@ this.UC3LoginByPassignUsernameAndPassword("edge", "standard_user", "secret_sauce
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "secret_sauce")]
         public void UC3LoginByPassignUsernameAndPassword_Variant3()
         {
-#line 27
+#line 30
 this.UC3LoginByPassignUsernameAndPassword("edge", "visual_user", "secret_sauce", ((string[])(null)));
 #line hidden
         }

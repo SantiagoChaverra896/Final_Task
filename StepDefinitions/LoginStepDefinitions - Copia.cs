@@ -3,13 +3,15 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using Final_Task.Utilities;
 using FluentAssertions;
+using Final_Task.PageObjects;
 
 namespace Final_Task.StepDefinitions
 {
     [Binding]
     public sealed class LoginStepDefinitions
     {
-        private IWebDriver driver;
+        private IWebDriver _driver;
+        private LoginPage _loginPage;
 
         //  Use ScenarioContext to store the browser type, if passed from the feature file
         private readonly ScenarioContext _scenarioContext;
@@ -22,31 +24,21 @@ namespace Final_Task.StepDefinitions
         [Given(@"A user is using the ""([^""]*)"" browser")]
         public void GivenAUserIsUsingTheBrowser(string browserType)
         {
-            driver = BrowserFactory.CreateDriver(browserType);  // Get browser from BrowserFactory
-            _scenarioContext["driver"] = driver;  // Store driver in ScenarioContext
-            driver.Url = "https://www.saucedemo.com";
-        }
-
-        [Given(@"A user opened the Browser")]
-        public void GivenAUserOpenedTheBrowser()
-        {
-            driver = new EdgeDriver();
-        
-            
-            driver.Url = "https://www.saucedemo.com";
-            driver.Manage().Window.Maximize();
+            _driver = BrowserFactory.CreateDriver(browserType);  // Get browser from BrowserFactory
+            _driver.Url = "https://www.saucedemo.com";
+            _loginPage = new LoginPage(_driver);
         }
 
         [When(@"The user clicks the Login button")]
         public void WhenTheUserClicksTheLoginButton()
         {
-            driver.FindElement(By.XPath("//input[@id='login-button']")).Click();
+            _loginPage.ClickLoginButton();
         }
 
         [Then(@"The application should display the error message: Username is required")]
         public void ThenTheApplicationShouldDisplayTheErrorMessageUsernameIsRequired()
         {
-            string errorMessage = driver.FindElement(By.XPath("//h3[@data-test='error']")).Text;
+            string errorMessage = _driver.FindElement(By.XPath("//h3[@data-test='error']")).Text;
             errorMessage.Should().Be("Epic sadface: Username is required", $"Expected error message to be 'Epic sadface: Username is required', but was '{errorMessage}'");
          
         }
@@ -54,13 +46,13 @@ namespace Final_Task.StepDefinitions
         [Given(@"The user types any credentials into the username field")]
         public void GivenTheUserTypesAnyCredentialsIntoTheUsernameField()
         {
-            driver.FindElement(By.XPath("//input[@data-test='username']")).SendKeys("AnyUsername");
+            _loginPage.EnterUserName("AnyValue");
         }
 
         [Then(@"The application should display the error message: Password is required")]
         public void ThenTheApplicationShouldDisplayTheErrorMessagePasswordIsRequired()
         {
-            string errorMessage = driver.FindElement(By.XPath("//h3[@data-test='error']")).Text;
+            string errorMessage = _driver.FindElement(By.XPath("//h3[@data-test='error']")).Text;
             errorMessage.Should().Be("Epic sadface: Password is required", "because the error message should indicate that the password is required, but was '{0}'", errorMessage);
 
         }
@@ -68,39 +60,58 @@ namespace Final_Task.StepDefinitions
         [Given(@"The user types a valid value into the username field")]
         public void GivenTheUserTypesAValidValueIntoTheUsernameField()
         {
-            driver.FindElement(By.XPath("//input[@data-test='username']")).SendKeys("standard_user");
+            _loginPage.EnterUserName("standard_user");
         }
 
         [Given(@"The user types a valid password into the password field")]
         public void GivenTheUserTypesAValidPasswordIntoThePasswordField()
         {
-            driver.FindElement(By.XPath("//input[@data-test='password']")).SendKeys("secret_sauce");
+            _loginPage.EnterPassword("secret_sauce");
         }
 
         [Given(@"The user types a valid ""([^""]*)"" into the username field")]
         public void GivenTheUserTypesAValidIntoTheUsernameField(string username)
         {
-            driver.FindElement(By.XPath("//input[@data-test='username']")).SendKeys(username);
+            _loginPage.EnterUserName(username); 
         }
 
         [Given(@"The user types a valid ""([^""]*)"" into the password field")]
         public void GivenTheUserTypesAValidIntoThePasswordField(string password)
         {
-            driver.FindElement(By.XPath("//input[@data-test='password']")).SendKeys(password);
+            _loginPage.EnterPassword(password);
         }
 
 
         [Then(@"The application should lead the user to the dashboard page with the title: Swag Labs")]
         public void ThenTheApplicationShouldLeadTheUserToTheDashboardPageWithTheTitleSwagLabs()
         {
-            string dashboardTitle = driver.Title;
+            string dashboardTitle = _driver.Title;
             dashboardTitle.Should().Be("Swag Labs","because the page title should be 'Swag Labs' when the user is led to the dashboard");
         }
+
+        [Given(@"The user types a valid username into the username field")]
+        public void GivenTheUserTypesAValidUsernameIntoTheUsernameField()
+        {
+            _loginPage.EnterUserName("standard_user");
+        }
+
+        [Given(@"The user clears the password field")]
+        public void GivenTheUserClearsThePasswordField()
+        {
+            _loginPage.ClearPassword();
+        }
+
+        [Given(@"The user clears the username field")]
+        public void GivenTheUserClearsTheUsernameField()
+        {
+            _loginPage.ClearUserName();
+;       }
+
 
         [AfterScenario]
         public void TearDown()
         {
-            driver.Quit();
+            _driver.Quit();
         }
 
 
